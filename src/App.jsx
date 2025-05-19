@@ -3,22 +3,24 @@ import './App.css';
 
 function App() {
   const [numero, setNumero] = useState(0);
-  const [num, setnum] = useState(0);
 
-  const [mostrar, setMostrar] = useState(false);
+  const [esconder, setEsconder] = useState(false);
+
+  function handleMostrarEsconder() {
+    esconder === true ? setEsconder(false) : setEsconder(true);
+  }
 
   return (
     <div>
       <h1>Valor: {numero}</h1>
-      <button onClick={() => setNumero(numero + num) }>Aumentar +100</button>
+      <button onClick={() => setNumero(numero + 100)}>Aumentar +100</button>
 
       <br /><br />
 
-      <button onClick={() => setMostrar(!mostrar)}>
-        {mostrar ? 'Esconder' : 'Mostrar'}
-      </button>
+      {/* criar um parágrafo com if ternário */}
+      <button onClick={handleMostrarEsconder}>{esconder === true ? "Esconder Texto" : "Mostrar Texto"}</button>
+      {esconder === true ? <p>Mostrar Texto</p> : ""}
 
-      {mostrar ? <p>parágrafo para esconder e mostrar.</p> : null}
     </div>
   );
 }
